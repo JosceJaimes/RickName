@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import Characters from './Characters';
 import axios from 'axios';
 import Details from './Details';
+import NavBar from './Navbar';
+
 
 
 const api_rickandmorty = `https://rickandmortyapi.com/api/character`;
@@ -17,8 +19,10 @@ class CharacterList extends Component {
 }
 
 componentDidMount(){
+    // console.log(pages)
     axios.get('https://rickandmortyapi.com/api/character/?page=1')
     .then(res =>{
+        
         const characterData = res.data.results;
         this.setState({
            items: characterData,
@@ -27,34 +31,11 @@ componentDidMount(){
 }
   render(){
     const { items } = this.state;
-    console.log(items);
+    // console.log(items);
     return(
     <div>
-    { 
-      items.map(i => {
-        return (
-          <Fragment>
-        <Characters 
-        key = {i.id} 
-        id = {i.id} 
-        name = {i.name} 
-        image = {i.image} 
-        status = {i.status}/>
-        <Details 
-        key = {i.id} 
-        id = {i.id} 
-        name={i.name} 
-        image = {i.image} 
-        status = {i.status}
-        species = {i.species}
-        tipo = {i.type}
-        gender= {i.gender}
-        origin= {i.origin.name}
-        />
-        </Fragment>
-        );
-      })
-    } 
+
+    <NavBar/> 
     </div>
      );
   }

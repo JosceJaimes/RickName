@@ -4,7 +4,7 @@ import { Card, CardImg, CardText, CardBody,
 
 const Characters = (props) => {
 
-        console.log(props);
+        // console.log(props);
         let statusLife;
         props.status !== "Alive" ? statusLife = "1": statusLife = "0"
         return(
